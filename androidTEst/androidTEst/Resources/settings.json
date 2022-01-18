@@ -1,0 +1,65 @@
+{
+  "platformName": "android",
+  "isRemote": true,
+  "remoteConnectionUrl": "http://127.0.0.1:4723/wd/hub",
+  "screensLocation": "Aquality.Appium.Mobile.Tests",
+
+  "driverSettings": {
+    "android": {
+      "deviceKey": "Android_Emulator",
+      "capabilities": {
+        "app": "./Resources/Apps/Nextcloud_v3.18.1_apkpure.com.apk",
+        "platformName": "Android",
+        "automationName": "UIAutomator2",
+        "eventTimings": true,
+        "uiautomator2ServerInstallTimeout": 30000
+      }
+    },
+    "ios": {
+      "deviceKey": "iOS_Simulator",
+      "capabilities": {
+        "app": "./Resources/Apps/TestApp.app.zip",
+        "platformName": "iOS",
+        "automationName": "XCUITest"
+      }
+    }
+  },
+  "localServiceSettings": {
+    "arguments": {
+      "--allow-insecure": "chromedriver_autodownload"
+    },
+    "capabilities": {
+    }
+  },
+  "timeouts": {
+    "timeoutImplicit": 0,
+    "timeoutCondition": 15,
+    "timeoutPollingInterval": 300,
+    "timeoutCommand": 120
+  },
+  "retry": {
+    "number": 2,
+    "pollingInterval": 300
+  },
+  "logger": {
+    "language": "en",
+    "logPageSource": true
+  },
+  "elementCache": {
+    "isEnabled": true
+  },
+  "touchActions": {
+    "swipe": {
+      "duration": 1,
+      "retries": 5,
+      "verticalOffset": 0.2,
+      "horizontalOffset": 0.5
+    }
+  },
+  "visualization": {
+    "defaultThreshold": 0.012,
+    "comparisonWidth": 16,
+    "comparisonHeight": 16,
+    "pathToDumps": "../../../Resources/VisualDumps/"
+  }
+}
