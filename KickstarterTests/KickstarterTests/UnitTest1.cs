@@ -6,13 +6,18 @@ namespace KickstarterTests
     public class Tests : BaseTest
     {
         [Test]
-        public void Test1()
+        [TestCase(2)]
+        public void Test1(int projectPosition)
         {
-            Assert.IsTrue(MainScreen.State.IsDisplayed, "Wrong page is opened");
+            Assert.IsTrue(MainScreen.State.IsDisplayed, "Wrong screen is opened");
 
-            MainScreen.SwipeRight();
+            MainScreen.SwipeLeft();
 
-            Assert.IsTrue(MainScreen.testMethod());
+            Assert.IsTrue(MainScreen.IsPopularTab(), "Wrong tab is opened");
+
+            MainScreen.SearchSecondProject(projectPosition);
+            string projectName = MainScreen.GetProjectName(projectPosition);
+
         }
     }
 }
