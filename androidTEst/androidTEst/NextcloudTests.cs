@@ -10,7 +10,7 @@ namespace androidTEst
         [Test]
         public void TestCase1()
         {
-            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is oppend");
+            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is opened");
 
             AllFilesScreen.GetAllFiles();
             AllFilesScreen.AddNewFile();
@@ -19,7 +19,7 @@ namespace androidTEst
             AllFilesScreen.SetFileName(TextFileName);
 
             Assert.AreEqual(TextFileName, AllFilesScreen.GetFileName(), "Wrong file");
-            Assert.IsTrue(EditingScreen.State.WaitForDisplayed(), "Wrong screen is oppend");
+            Assert.IsTrue(EditingScreen.State.WaitForDisplayed(), "Wrong screen is opened");
 
             EditingScreen.SetRandomText(StringUtil.GetRandomString());
             EditingScreen.CloseTextEditor();
@@ -32,7 +32,7 @@ namespace androidTEst
         [Test]
         public void TestCase2()
         {
-            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is oppend");
+            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is opened");
 
             AllFilesScreen.GetAllFiles();
             AllFilesScreen.AddNewFile();
@@ -41,7 +41,7 @@ namespace androidTEst
             AllFilesScreen.SetFileName(TextFileName);
 
             Assert.AreEqual(TextFileName, AllFilesScreen.GetFileName(), "Wrong file");
-            Assert.IsTrue(EditingScreen.State.WaitForDisplayed(), "Wrong screen is oppend");
+            Assert.IsTrue(EditingScreen.State.WaitForDisplayed(), "Wrong screen is opened");
 
             EditingScreen.SetRandomText(StringUtil.GetRandomString());
             EditingScreen.CloseTextEditor();
@@ -60,7 +60,7 @@ namespace androidTEst
         [Test]
         public void TestCase3()
         {
-            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is oppend");
+            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is opened");
 
             AllFilesScreen.GetAllFiles();
 
@@ -68,7 +68,7 @@ namespace androidTEst
 
             AllFilesScreen.OpenFile(ConfigManager.GetSetting("FileName"));
 
-            Assert.IsTrue(EditingScreen.State.WaitForDisplayed(), "Wrong screen is oppend");
+            Assert.IsTrue(EditingScreen.State.WaitForDisplayed(), "Wrong screen is opened");
             Assert.IsTrue(EditingScreen.IsTextFieldWithSomeTextDisplayed(ConfigManager.GetSetting("SomeText")), "Invalid text in file");
 
             EditingScreen.CloseTextEditor();
@@ -77,7 +77,7 @@ namespace androidTEst
         [Test]
         public void TestCase4()
         {
-            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is oppend");
+            Assert.IsTrue(AllFilesScreen.State.IsExist, "Wrong screen is opened");
 
             AllFilesScreen.TypeAndSearchText(ConfigManager.GetSetting("SearchText"));
 
