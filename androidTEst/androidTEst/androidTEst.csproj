@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="JsonConfigs\AccountData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\Apps\Nextcloud_v3.18.1_apkpure.com.apk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

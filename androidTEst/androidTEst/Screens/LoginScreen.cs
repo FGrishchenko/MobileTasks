@@ -7,12 +7,10 @@ namespace androidTEst.Screens
     public class LoginScreen : Screen
     {
         private ITextBox PassOrLoginTextBox(string resourceId) => ElementFactory.GetTextBox(By.XPath($"//android.widget.EditText[@resource-id= '{resourceId}']"), "PassOrLoginTextBox");
-
         private readonly IButton SubmitButt = ElementFactory.GetButton(By.XPath("//android.widget.Button[@resource-id= 'submit-form']"), "SubmitButt");
 
         public LoginScreen() : base(By.XPath("//android.widget.Button[@resource-id= 'submit-form']"), "submitButt")
         {
-
 
         }
 

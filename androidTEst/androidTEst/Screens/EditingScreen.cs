@@ -7,9 +7,7 @@ namespace androidTEst
     public class EditingScreen : Screen
     {
         private readonly ITextBox EditTextField = ElementFactory.GetTextBox(By.XPath("//android.widget.EditText"), "editTextField");
-
         private readonly IButton CloseButt = ElementFactory.GetButton(By.XPath("//android.widget.Button[@index= 3]"), "closeButton");
-
         private ILabel TextFieldWithSomeText(string text) => ElementFactory.GetLabel(By.XPath($"//android.widget.EditText[contains(@text, '{text}')]"), "TextFieldWithSomeText");
 
         public EditingScreen() : base(By.XPath("//android.widget.Spinner"), "editTextField")

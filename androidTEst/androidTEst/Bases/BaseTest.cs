@@ -1,4 +1,6 @@
-﻿using androidTEst.Screens;
+﻿using androidTEst.Models;
+using androidTEst.Screens;
+using androidTEst.Utilities;
 using androidTEst.Utils;
 using Aquality.Appium.Mobile.Applications;
 using Aquality.Appium.Mobile.Template.Screens.Login;
@@ -9,6 +11,8 @@ namespace androidTEst.Bases
     public abstract class BaseTest
     {
         protected static IMobileApplication App;
+
+        protected static TestData ReadData = DeserializationData.ReadDataFromFile<TestData>(ConfigManager.GetSetting("AccountDataFile"));
 
         protected static AllFilesScreen AllFilesScreen = new AllFilesScreen();
         protected static EditingScreen EditingScreen = new EditingScreen();
@@ -30,27 +34,29 @@ namespace androidTEst.Bases
         [OneTimeSetUp]
         public void Test()
         {
-            StartScreen.State.WaitForDisplayed();
-            StartScreen.ClickToLogButt();
-            ServerAdressScreen.State.WaitForDisplayed();
-            ServerAdressScreen.EnterServerAdress("https://sam.nl.tab.digital/");
-            ConnectScreen.State.WaitForDisplayed();
-            ConnectScreen.Login();
-            LoginScreen.State.WaitForDisplayed();
-            LoginScreen.SetLoginOrPassword("user", "testzxc993@gmail.com");
-            LoginScreen.SetLoginOrPassword("password", "993322qwezxc");
-            LoginScreen.Submit();
-            ConnectScreen.LoginWithWait();
-            AlertScreen.State.WaitForDisplayed();
-            AlertScreen.GoToSettings();
-            SettingsScreen.State.WaitForDisplayed();
-            SettingsScreen.AllowAccessAndClose();
+            if (StartScreen.State.WaitForDisplayed())
+            {
+                StartScreen.ClickToLogButt();
+                ServerAdressScreen.State.WaitForDisplayed();
+                ServerAdressScreen.EnterServerAdress(ReadData.AccountData.ServerAdress);
+                ConnectScreen.State.WaitForDisplayed();
+                ConnectScreen.Login();
+                LoginScreen.State.WaitForDisplayed();
+                LoginScreen.SetLoginOrPassword(ConfigManager.GetSetting("ResourceIdForLogin"), ReadData.AccountData.Login);
+                LoginScreen.SetLoginOrPassword(ConfigManager.GetSetting("ResourceIdForPassword"), ReadData.AccountData.Password);
+                LoginScreen.Submit();
+                ConnectScreen.LoginWithWait();
+                AlertScreen.State.WaitForDisplayed();
+                AlertScreen.GoToSettings();
+                SettingsScreen.State.WaitForDisplayed();
+                SettingsScreen.AllowAccessAndClose();
+            }
         }
 
         [TearDown]
         public void TearDown()
         {
-           // App.Quit();
+            App.Quit();
         }
     }
 }

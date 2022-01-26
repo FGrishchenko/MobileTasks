@@ -8,36 +8,22 @@ namespace Aquality.Appium.Mobile.Template.Screens.Login
     public class AllFilesScreen : Screen
     {
         private readonly IButton AddNewFileButt = ElementFactory.GetButton(By.Id("com.nextcloud.client:id/fab_main"), "AddNewFileButt");
-
         private readonly IButton MenuButt = ElementFactory.GetButton(By.Id("com.nextcloud.client:id/menu_button"), "MenuButt");
-
         private readonly IButton AllFilesButt = ElementFactory.GetButton(By.Id("com.nextcloud.client:id/sort_list_button_group"), "AllFilesButt");
 
         // regardless of the language of the system/application, the text "текстовый документ" doesn't change. (see ./Screenshots)
         private readonly IButton CreateDoc = ElementFactory.GetButton(By.XPath("//android.widget.TextView[@resource-id= 'com.nextcloud.client:id/creator_name' and contains(@text, 'текстовый документ')]"), "CreateDoc");
-
         private readonly ITextBox TextFileName = ElementFactory.GetTextBox(By.Id("com.nextcloud.client:id/filename"), "TextFileName");
-
         private readonly IButton CreateButton = ElementFactory.GetButton(By.Id("android:id/button1"), "CreateButton");
-
         private ILabel MyFile(string fileName) => ElementFactory.GetLabel(By.XPath($"//android.widget.TextView[@resource-id = 'com.nextcloud.client:id/Filename' and contains(@text, '{fileName}')]"), "MyFile");
-
         private readonly By ListOfFiles = By.XPath("//android.widget.TextView[@resource-id='com.nextcloud.client:id/Filename']");
-
         private IButton MoreMemu(int index) => ElementFactory.GetButton(By.XPath($"(//android.widget.ImageView[@resource-id='com.nextcloud.client:id/overflow_menu'])[{index}]"), "MoreMemu");
-
         private IButton MoreMemuButt = ElementFactory.GetButton(By.XPath("//android.widget.ImageView[@resource-id='com.nextcloud.client:id/overflow_menu']"), "MoreMemuButt");
-
         private readonly IButton DelButton = ElementFactory.GetButton(By.XPath("(//android.widget.LinearLayout[@resource-id='android:id/content'])[8]"), "DelButton");
-
         private readonly IButton SecondDelButton = ElementFactory.GetButton(By.Id("android:id/button1"), "SecondDelButton");
-
         private readonly ITextBox Search = ElementFactory.GetTextBox(By.Id("com.nextcloud.client:id/search_text"), "Search");
-
         private readonly ITextBox SearchTextBox = ElementFactory.GetTextBox(By.Id("com.nextcloud.client:id/search_src_text"), "SearchTextBox");
-
         private ILabel FileTitle(string fileName) => ElementFactory.GetLabel(By.XPath($"//android.widget.TextView[@resource-id= 'com.nextcloud.client:id/title' and contains(@text, '{fileName}')]"), "FileTitle");
-
         private By ListOfFilesWtihFormat(string format) => By.XPath($"//android.widget.TextView[@resource-id= 'com.nextcloud.client:id/title' and contains(@text, '{format}')]");
 
         public AllFilesScreen() : base(By.Id("com.nextcloud.client:id/fab_main"), "AddNewFileButt")
