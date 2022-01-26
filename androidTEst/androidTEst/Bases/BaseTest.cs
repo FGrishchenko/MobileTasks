@@ -32,7 +32,7 @@ namespace androidTEst.Bases
         }
 
         [OneTimeSetUp]
-        public void Test()
+        public void OneTimeSetUp()
         {
             if (StartScreen.State.WaitForDisplayed())
             {
