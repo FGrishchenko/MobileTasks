@@ -8,29 +8,29 @@ namespace KickstarterTests.Screens
 {
     public class MainScreen : Screen
     {
-        private readonly ILabel Percent = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/percent"), "Percent");
+        private readonly ILabel PercentLabel = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/percent"), "Percent");
 
-        private readonly ILabel DeadlineCountdown = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/deadline_countdown"), "DeadlineCountdown");
+        private readonly ILabel DeadlineCountdownLabel = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/deadline_countdown"), "Deadline Countdown");
 
-        private readonly ILabel SubcategoryIcon = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/subcategory_icon"), "SubcategoryIcon");
+        private readonly ILabel SubcategoryIcon = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/subcategory_icon"), "Subcategory Icon");
 
-        private readonly ILabel Popular = ElementFactory.GetLabel(By.XPath("//android.widget.LinearLayout[@content-desc= 'Popular' and @selected= 'true']"), "DeadlineCountdown");
+        private readonly ILabel PopularTabLabel = ElementFactory.GetLabel(By.XPath("//android.widget.LinearLayout[@content-desc= 'Popular' and @selected= 'true']"), "Deadline Countdown");
 
-        private ILabel SecondPopularProject(int position) => ElementFactory.GetLabel(By.XPath($"(//android.widget.TextView[@resource-id= 'com.kickstarter.kickstarter:id/percent'])[{position}]"), "SecondPopularProject");
+        private ILabel SecondPopularProjectLabel(int position) => ElementFactory.GetLabel(By.XPath($"(//android.widget.TextView[@resource-id= 'com.kickstarter.kickstarter:id/percent'])[{position}]"), "Second Popular Project");
 
-        private ILabel DaysToGo(int position) => ElementFactory.GetLabel(By.XPath($"(//android.widget.TextView[@resource-id= 'com.kickstarter.kickstarter:id/deadline_countdown'])[{position}]"), "DaysToGo");
+        private ILabel DaysToGoLabel(int position) => ElementFactory.GetLabel(By.XPath($"(//android.widget.TextView[@resource-id= 'com.kickstarter.kickstarter:id/deadline_countdown'])[{position}]"), "Days To Go");
 
-        private readonly ILabel ProjectName = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/project_name"), "ProjectName");
+        private readonly ILabel ProjectNameLabel = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/project_name"), "Project Name");
 
-        private readonly IButton SearchButt = ElementFactory.GetButton(By.Id("com.kickstarter.kickstarter:id/search_button"), "SearchButt");
+        private readonly IButton SearchButton = ElementFactory.GetButton(By.Id("com.kickstarter.kickstarter:id/search_button"), "Search");
 
-        private readonly ITextBox SearchTextBox = ElementFactory.GetTextBox(By.Id("com.kickstarter.kickstarter:id/search_edit_text"), "SearchTextBox");
+        private readonly ITextBox SearchTextBox = ElementFactory.GetTextBox(By.Id("com.kickstarter.kickstarter:id/search_edit_text"), "Search field");
 
-        private readonly ILabel ProjectNameAfterSearch = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/project_name_text_view"), "ProjectNameAfterSearch");
-        private readonly ILabel PercentAfterSearch = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/search_result_percent_funded_text_view"), "PercentAfterSearch");
-        private readonly ILabel DaysToGoSearch = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/search_result_deadline_countdown_text_view"), "DeadlineCountdownAfterSearch");
+        private readonly ILabel ProjectNameAfterSearchLabel = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/project_name_text_view"), "Project Name After Search");
+        private readonly ILabel PercentAfterSearchLabel = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/search_result_percent_funded_text_view"), "Percent After Search");
+        private readonly ILabel DaysToGoSearchLabel = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/search_result_deadline_countdown_text_view"), "Deadline Countdown After Search");
 
-        public MainScreen() : base(By.Id("com.kickstarter.kickstarter:id/login_tout_button"), "LogButton")
+        public MainScreen() : base(By.Id("com.kickstarter.kickstarter:id/login_tout_button"), "Login Button")
         {
 
         }
@@ -39,7 +39,7 @@ namespace KickstarterTests.Screens
         {
             try
             {
-                ScrollAndSwipeUtils.SwipeWithAttemptsToTheDisplayedElement(Popular, DeadlineCountdown, PointUtils.FromPointToEdge(Percent));
+                ScrollAndSwipeUtils.SwipeWithAttemptsToTheDisplayedElement(PopularTabLabel, DeadlineCountdownLabel, PointUtils.FromPointToEdge(PercentLabel));
             }
             catch
             {
@@ -50,55 +50,55 @@ namespace KickstarterTests.Screens
 
         public bool IsPopularTab()
         {
-            return Popular.State.WaitForDisplayed();
+            return PopularTabLabel.State.WaitForDisplayed();
         }
 
         public void SearchSecondProject(int position)
         {
-            SecondPopularProject(position).TouchActions.ScrollToElement(SwipeDirection.Left);
+            SecondPopularProjectLabel(position).TouchActions.ScrollToElement(SwipeDirection.Left);
         }
 
         public string GetDaysToGo(int position)
         {
-            return DaysToGo(position).Text;
+            return DaysToGoLabel(position).Text;
         }
 
         public string GetPercent(int position)
         {
-            return SecondPopularProject(position).Text;
+            return SecondPopularProjectLabel(position).Text;
         }
 
         public string GetProjectName(int position)
         {
-            SecondPopularProject(position).Click();
-            return ProjectName.Text;
+            SecondPopularProjectLabel(position).Click();
+            return ProjectNameLabel.Text;
         }
 
         public void Search(string prName)
         {
-            SearchButt.TouchActions.ScrollToElement(SwipeDirection.Up);
-            SearchButt.Click();
+            SearchButton.TouchActions.ScrollToElement(SwipeDirection.Up);
+            SearchButton.Click();
             SearchTextBox.ClearAndType($"{prName}\\n");
         }
 
         public string GetDaysToGoAfterSearch()
         {
-            return DaysToGoSearch.Text;
+            return DaysToGoSearchLabel.Text;
         }
 
         public string GetPercentAfterSearch()
         {
-            return PercentAfterSearch.Text;
+            return PercentAfterSearchLabel.Text;
         }
 
         public string GetProjectNameAfterSearch()
         {
-            return ProjectNameAfterSearch.Text;
+            return ProjectNameAfterSearchLabel.Text;
         }
 
         public void GoToPrScreenAfterSearch()
         {
-            ProjectNameAfterSearch.Click();
+            ProjectNameAfterSearchLabel.Click();
         }
     }
 }
