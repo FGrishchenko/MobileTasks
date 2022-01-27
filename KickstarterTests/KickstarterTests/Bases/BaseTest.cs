@@ -9,6 +9,7 @@ namespace androidTEst.Bases
         private static IMobileApplication App;
 
         protected static MainScreen MainScreen = new MainScreen();
+        protected static ProjectScreen ProjectScreen = new ProjectScreen();
 
         [SetUp]
         public void Setup()
@@ -19,7 +20,7 @@ namespace androidTEst.Bases
         [TearDown]
         public void TearDown()
         {
-           // App.Quit();
+            App.Quit();
         }
     }
 }

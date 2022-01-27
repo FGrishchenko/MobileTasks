@@ -22,6 +22,14 @@ namespace KickstarterTests.Screens
 
         private readonly ILabel ProjectName = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/project_name"), "ProjectName");
 
+        private readonly IButton SearchButt = ElementFactory.GetButton(By.Id("com.kickstarter.kickstarter:id/search_button"), "SearchButt");
+
+        private readonly ITextBox SearchTextBox = ElementFactory.GetTextBox(By.Id("com.kickstarter.kickstarter:id/search_edit_text"), "SearchTextBox");
+
+        private readonly ILabel ProjectNameAfterSearch = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/project_name_text_view"), "ProjectNameAfterSearch");
+        private readonly ILabel PercentAfterSearch = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/search_result_percent_funded_text_view"), "PercentAfterSearch");
+        private readonly ILabel DaysToGoSearch = ElementFactory.GetLabel(By.Id("com.kickstarter.kickstarter:id/search_result_deadline_countdown_text_view"), "DeadlineCountdownAfterSearch");
+
         public MainScreen() : base(By.Id("com.kickstarter.kickstarter:id/login_tout_button"), "LogButton")
         {
 
@@ -66,5 +74,31 @@ namespace KickstarterTests.Screens
             return ProjectName.Text;
         }
 
+        public void Search(string prName)
+        {
+            SearchButt.TouchActions.ScrollToElement(SwipeDirection.Up);
+            SearchButt.Click();
+            SearchTextBox.ClearAndType($"{prName}\\n");
+        }
+
+        public string GetDaysToGoAfterSearch()
+        {
+            return DaysToGoSearch.Text;
+        }
+
+        public string GetPercentAfterSearch()
+        {
+            return PercentAfterSearch.Text;
+        }
+
+        public string GetProjectNameAfterSearch()
+        {
+            return ProjectNameAfterSearch.Text;
+        }
+
+        public void GoToPrScreenAfterSearch()
+        {
+            ProjectNameAfterSearch.Click();
+        }
     }
 }
