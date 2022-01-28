@@ -56,7 +56,7 @@ namespace androidTEst.Bases
         [TearDown]
         public void TearDown()
         {
-            App.Quit();
+            App?.Quit();
         }
     }
 }
