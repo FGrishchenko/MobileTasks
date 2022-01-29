@@ -6,16 +6,16 @@ namespace androidTEst.Screens
 {
     public class StartScreen : Screen
     {
-        private readonly IButton LogButt = ElementFactory.GetButton(By.Id("com.nextcloud.client:id/login"), "LogButt");
+        private readonly IButton LoginButton = ElementFactory.GetButton(By.Id("com.nextcloud.client:id/login"), "Login");
 
         public StartScreen() : base(By.Id("com.nextcloud.client:id/login"), "Login")
         {
 
         }
 
-        public void ClickToLogButt()
+        public void ClickToLoginButton()
         {
-            LogButt.Click();
+            LoginButton.Click();
         }
     }
 }

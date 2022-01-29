@@ -6,22 +6,28 @@ namespace androidTEst.Screens
 {
     public class LoginScreen : Screen
     {
-        private ITextBox PassOrLoginTextBox(string resourceId) => ElementFactory.GetTextBox(By.XPath($"//android.widget.EditText[@resource-id= '{resourceId}']"), "PassOrLoginTextBox");
-        private readonly IButton SubmitButt = ElementFactory.GetButton(By.XPath("//android.widget.Button[@resource-id= 'submit-form']"), "SubmitButt");
+        private ITextBox LoginTextBox = ElementFactory.GetTextBox(By.XPath($"//android.widget.EditText[@resource-id= 'user']"), "Login");
+        private ITextBox PasswordTextBox = ElementFactory.GetTextBox(By.XPath($"//android.widget.EditText[@resource-id= 'password']"), "Password");
+        private readonly IButton SubmitButton = ElementFactory.GetButton(By.XPath("//android.widget.Button[@resource-id= 'submit-form']"), "Submit");
 
-        public LoginScreen() : base(By.XPath("//android.widget.Button[@resource-id= 'submit-form']"), "submitButt")
+        public LoginScreen() : base(By.XPath("//android.widget.Button[@resource-id= 'submit-form']"), "Submit Button")
         {
 
         }
 
-        public void SetLoginOrPassword(string resourceId, string login)
+        public void SetLogin(string login)
         {
-            PassOrLoginTextBox(resourceId).ClearAndType(login);
+            LoginTextBox.ClearAndType(login);
         }
 
-        public void Submit()
+        public void SetPassword(string password)
         {
-            SubmitButt.Click();
+            PasswordTextBox.ClearAndType(password);
+        }
+
+        public void ClickSubmitButton()
+        {
+            SubmitButton.Click();
         }
     }
 }

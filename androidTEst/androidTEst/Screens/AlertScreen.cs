@@ -6,14 +6,14 @@ namespace androidTEst.Screens
 {
     public class AlertScreen : Screen
     {
-        private readonly IButton OKButton = ElementFactory.GetButton(By.XPath("//android.widget.Button[@resource-id= 'android:id/button1']"), "OKButton");
+        private readonly IButton OKButton = ElementFactory.GetButton(By.XPath("//android.widget.Button[@resource-id= 'android:id/button1']"), "OK");
 
-        public AlertScreen() : base(By.XPath("//android.widget.Button[@resource-id= 'android:id/button1']"), "OK butt")
+        public AlertScreen() : base(By.XPath("//android.widget.Button[@resource-id= 'android:id/button1']"), "OK")
         {
 
         }
 
-        public void GoToSettings()
+        public void ClickOkButton()
         {
             OKButton.Click();
         }

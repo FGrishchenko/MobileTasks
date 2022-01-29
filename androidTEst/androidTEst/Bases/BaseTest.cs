@@ -10,7 +10,7 @@ namespace androidTEst.Bases
 {
     public abstract class BaseTest
     {
-        protected static IMobileApplication App;
+        protected static IMobileApplication? App;
 
         protected static TestData ReadData = DeserializationData.ReadDataFromFile<TestData>(ConfigManager.GetSetting("AccountDataFile"));
 
@@ -36,18 +36,18 @@ namespace androidTEst.Bases
         {
             if (StartScreen.State.WaitForDisplayed())
             {
-                StartScreen.ClickToLogButt();
+                StartScreen.ClickToLoginButton();
                 ServerAdressScreen.State.WaitForDisplayed();
                 ServerAdressScreen.EnterServerAdress(ReadData.AccountData.ServerAdress);
                 ConnectScreen.State.WaitForDisplayed();
                 ConnectScreen.Login();
                 LoginScreen.State.WaitForDisplayed();
-                LoginScreen.SetLoginOrPassword(ConfigManager.GetSetting("ResourceIdForLogin"), ReadData.AccountData.Login);
-                LoginScreen.SetLoginOrPassword(ConfigManager.GetSetting("ResourceIdForPassword"), ReadData.AccountData.Password);
-                LoginScreen.Submit();
+                LoginScreen.SetLogin(ReadData.AccountData.Login);
+                LoginScreen.SetPassword(ReadData.AccountData.Password);
+                LoginScreen.ClickSubmitButton();
                 ConnectScreen.LoginWithWait();
                 AlertScreen.State.WaitForDisplayed();
-                AlertScreen.GoToSettings();
+                AlertScreen.ClickOkButton();
                 SettingsScreen.State.WaitForDisplayed();
                 SettingsScreen.AllowAccessAndClose();
             }

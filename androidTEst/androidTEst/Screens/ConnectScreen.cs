@@ -6,8 +6,8 @@ namespace androidTEst.Screens
 {
     public class ConnectScreen : Screen
     {
-        private readonly IButton LogButt = ElementFactory.GetButton(By.XPath("//android.widget.Button"), "LogButt");
-        private readonly IButton SubmitWrapper = ElementFactory.GetButton(By.XPath("//android.view.View[@resource-id= 'submit-wrapper' and @index= 0]"), "SubmitWrapper");
+        private readonly IButton LoginButton = ElementFactory.GetButton(By.XPath("//android.widget.Button"), "Login");
+        private readonly IButton SubmitWrapperButton = ElementFactory.GetButton(By.XPath("//android.view.View[@resource-id= 'submit-wrapper' and @index= 0]"), "Submit Wrapper");
 
         public ConnectScreen() : base(By.XPath("//android.view.View[@resource-id= 'redirect-link']"), "ConnectScreen")
         {
@@ -16,13 +16,13 @@ namespace androidTEst.Screens
 
         public void Login()
         {
-            LogButt.Click();
+            LoginButton.Click();
         }
 
         public void LoginWithWait()
         {
-            SubmitWrapper.State.WaitForDisplayed();
-            LogButt.Click();
+            SubmitWrapperButton.State.WaitForDisplayed();
+            LoginButton.Click();
         }
     }
 }

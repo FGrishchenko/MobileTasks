@@ -6,18 +6,18 @@ namespace androidTEst.Screens
 {
     public class SettingsScreen : Screen
     {
-        private readonly IButton SwitchButt = ElementFactory.GetButton(By.XPath("//android.widget.Switch[@resource-id= 'android:id/switch_widget']"), "SwitchButt");
-        private readonly IButton BackButt = ElementFactory.GetButton(By.XPath("//android.widget.ImageButton"), "BackButt");
+        private readonly IButton SwitchButton = ElementFactory.GetButton(By.XPath("//android.widget.Switch[@resource-id= 'android:id/switch_widget']"), "Switch Butt");
+        private readonly IButton BackButton = ElementFactory.GetButton(By.XPath("//android.widget.ImageButton"), "Back");
 
-        public SettingsScreen() : base(By.XPath("//android.widget.Switch[@resource-id= 'android:id/switch_widget']"), "SwitchButt")
+        public SettingsScreen() : base(By.XPath("//android.widget.Switch[@resource-id= 'android:id/switch_widget']"), "Switch")
         {
 
         }
 
         public void AllowAccessAndClose()
         {
-            SwitchButt.Click();
-            BackButt.Click();
+            SwitchButton.Click();
+            BackButton.Click();
         }
     }
 }

@@ -6,9 +6,9 @@ namespace androidTEst
 {
     public class EditingScreen : Screen
     {
-        private readonly ITextBox EditTextField = ElementFactory.GetTextBox(By.XPath("//android.widget.EditText"), "editTextField");
-        private readonly IButton CloseButt = ElementFactory.GetButton(By.XPath("//android.widget.Button[@index= 3]"), "closeButton");
-        private ILabel TextFieldWithSomeText(string text) => ElementFactory.GetLabel(By.XPath($"//android.widget.EditText[contains(@text, '{text}')]"), "TextFieldWithSomeText");
+        private readonly ITextBox EditTextBox = ElementFactory.GetTextBox(By.XPath("//android.widget.EditText"), "Edit Text");
+        private readonly IButton CloseButton = ElementFactory.GetButton(By.XPath("//android.widget.Button[@index= 3]"), "Close");
+        private ILabel TextFieldWithSomeText(string text) => ElementFactory.GetLabel(By.XPath($"//android.widget.EditText[contains(@text, '{text}')]"), "Text");
 
         public EditingScreen() : base(By.XPath("//android.widget.Spinner"), "editTextField")
         {
@@ -17,12 +17,12 @@ namespace androidTEst
 
         public void SetRandomText(string rndStr)
         {
-            EditTextField.ClearAndType(rndStr);
+            EditTextBox.ClearAndType(rndStr);
         }
 
         public void CloseTextEditor()
         {
-            CloseButt.Click();
+            CloseButton.Click();
         }
 
         public bool IsTextFieldWithSomeTextDisplayed(string text)

@@ -7,7 +7,7 @@ namespace androidTEst.Screens
 {
     public class ServerAdressScreen : Screen
     {
-        private readonly ITextBox ServerAdress = ElementFactory.GetTextBox(By.Id("com.nextcloud.client:id/host_url_input"), "ServerAdress");
+        private readonly ITextBox ServerAdressTextBox = ElementFactory.GetTextBox(By.Id("com.nextcloud.client:id/host_url_input"), "Server Adress");
 
         public ServerAdressScreen() : base(By.Id("com.nextcloud.client:id/scan_qr"), "LoginQRCode")
         {
@@ -16,7 +16,7 @@ namespace androidTEst.Screens
 
         public void EnterServerAdress(string serverAdress)
         {
-            ServerAdress.TypeAndSearch(serverAdress);
+            ServerAdressTextBox.TypeAndSearch(serverAdress);
         }
     }
 }

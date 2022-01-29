@@ -10,8 +10,7 @@ namespace androidTEst
         [Test]
         public void TestCase1()
         {
-            AllFilesScreen.State.WaitForExist();
-            AllFilesScreen.GetAllFiles();
+            AllFilesScreen.State.WaitForDisplayed();
             AllFilesScreen.AddNewFile();
             AllFilesScreen.CreateTextDocument();
             AllFilesScreen.SetFileName(TextFileName);
@@ -29,8 +28,7 @@ namespace androidTEst
         [Test]
         public void TestCase2()
         {
-            AllFilesScreen.State.WaitForExist();
-            AllFilesScreen.GetAllFiles();
+            AllFilesScreen.State.WaitForDisplayed();
             AllFilesScreen.AddNewFile();
             AllFilesScreen.CreateTextDocument();
             AllFilesScreen.SetFileName(TextFileName);
@@ -51,8 +49,7 @@ namespace androidTEst
         [Test]
         public void TestCase3()
         {
-            AllFilesScreen.State.WaitForExist();
-            AllFilesScreen.GetAllFiles();
+            AllFilesScreen.State.WaitForDisplayed();
             Assert.IsTrue(AllFilesScreen.WaitForFileDisplayed(ConfigManager.GetSetting("FileName")), "File doesn't exist");
 
             AllFilesScreen.OpenFile(ConfigManager.GetSetting("FileName"));
@@ -65,7 +62,7 @@ namespace androidTEst
         [Test]
         public void TestCase4()
         {
-            AllFilesScreen.State.WaitForExist();
+            AllFilesScreen.State.WaitForDisplayed();
 
             AllFilesScreen.TypeAndSearchText(ConfigManager.GetSetting("SearchText"));
 
