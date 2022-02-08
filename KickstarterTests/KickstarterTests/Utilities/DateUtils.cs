@@ -7,9 +7,9 @@ namespace KickstarterTests.Utilities
     {
         private static string DateFormat = "MMM dd, yyyy";
 
-        public static string AddDaysAndReturnValidFormat(DateTime TodayDate, string days)
+        public static string AddDaysAndReturnValidFormat(DateTime todayDate, string days)
         {
-            var ExpectedDate = TodayDate.AddDays(double.Parse(days)); // DaysToGo
+            var ExpectedDate = todayDate.AddDays(double.Parse(days));
             return ExpectedDate.ToString(DateFormat, CultureInfo.GetCultureInfo("en-en"));
         }
     }
